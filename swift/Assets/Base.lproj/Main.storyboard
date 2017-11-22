@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" userLabel="View Controller" customClass="ViewController" customModule="tensorflowiOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3eR-Rn-XpZ" userLabel="Preview" customClass="CameraPreviewView" customModule="tensorflowiOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="fY6-qX-ntV" appends="YES" id="G6D-dx-xU8"/>
+                                </connections>
+                            </view>
+                            <label hidden="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera Unavailable" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zf0-db-esM" userLabel="Camera Unavailable">
+                                <rect key="frame" x="83.5" y="319" width="208" height="29"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rst-83-d3W" userLabel="BoundingBoxView" customClass="BoundingBoxView" customModule="tensorflowiOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <viewLayoutGuide key="safeArea" id="gUN-1A-d0e"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="3eR-Rn-XpZ" firstAttribute="centerX" secondItem="mjw-BI-djO" secondAttribute="centerX" id="125-kC-WZF"/>
+                            <constraint firstItem="3eR-Rn-XpZ" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="Ice-47-M9N"/>
+                            <constraint firstItem="zf0-db-esM" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ris-mI-8lA"/>
+                            <constraint firstItem="zf0-db-esM" firstAttribute="centerX" secondItem="mjw-BI-djO" secondAttribute="centerX" id="W6q-xJ-jfF"/>
+                            <constraint firstItem="3eR-Rn-XpZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="igk-MQ-CGt"/>
+                            <constraint firstItem="3eR-Rn-XpZ" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="pSC-xP-dl0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mjw-BI-djO"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="boundingBoxView" destination="rst-83-d3W" id="E12-GF-ulS"/>
+                        <outlet property="cameraPreviewView" destination="3eR-Rn-XpZ" id="1Yl-Fe-7Ca"/>
+                        <outlet property="cameraUnavailableLabel" destination="zf0-db-esM" id="34f-ux-1TY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="fY6-qX-ntV"/>
+            </objects>
+            <point key="canvasLocation" x="-656.79999999999995" y="-630.13493253373315"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+</document>
