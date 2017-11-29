@@ -99,7 +99,7 @@
 				5365E48A1FB762BE0004EFFD /* Assets */,
 				5365E49B1FB762BE0004EFFD /* SupportingFiles */,
 			);
-			path = tensorflowiOS;
+			name = tensorflowiOS;
 			sourceTree = "<group>";
 		};
 		5365E48A1FB762BE0004EFFD /* Assets */ = {
