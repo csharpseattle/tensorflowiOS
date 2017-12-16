@@ -247,14 +247,28 @@ const int kAverageEveryXFrames   = 50;   // Output average processing time every
                     prediction.bottom = boundingBoxesFlat(i * 4 + 2);
                     prediction.right  = boundingBoxesFlat(i * 4 + 3);
 
+
                     //
                     // Crop the pixels out of the bounding box and put the cropped
-                    // image into the prediction object
+                    // image into the prediction object. Prediction values are
+                    // normalized so we multiply by the image dimensions to get
+                    // back to pixel values.
                     //
-                    const int x = prediction.left    * kGraphImageWidth;
-                    const int y = prediction.top     * kGraphImageHeight;
-                    const int w = (prediction.right  * kGraphImageWidth)  - x;
-                    const int h = (prediction.bottom * kGraphImageHeight) - y;
+                    const int w = srcWidth  * (prediction.right - prediction.left);
+                    const int h = srcHeight * (prediction.bottom - prediction.top);
+                    
+                    int x, y;
+                    if (orientation == UIDeviceOrientationLandscapeRight)
+                    {
+                        x = srcWidth  * (1 - prediction.left - (prediction.right - prediction.left));
+                        y = srcHeight * (1 - prediction.top - (prediction.bottom - prediction.top));
+                    }
+                    else
+                    {
+                        x = srcWidth  * prediction.left;
+                        y = srcHeight * prediction.top;
+                    }
+
                     CGRect croppedArea = CGRectMake(x, y, w, h);
                     CGImageRef cropped = CGImageCreateWithImageInRect(cgImage, croppedArea);
                     prediction.image = [UIImage imageWithCGImage:cropped];
