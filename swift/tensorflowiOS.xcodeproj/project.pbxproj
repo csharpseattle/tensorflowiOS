@@ -19,7 +19,6 @@
 		5365E4A91FB7660F0004EFFD /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5365E4A81FB7660F0004EFFD /* CameraPreviewView.swift */; };
 		5365E4AB1FB7807E0004EFFD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5365E4AA1FB7807E0004EFFD /* Constants.swift */; };
 		5365E4AD1FB796B80004EFFD /* BoundingBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5365E4AC1FB796B80004EFFD /* BoundingBoxView.swift */; };
-		5365E4B81FB7A8B90004EFFD /* tensorflow.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5365E4B71FB7A8B90004EFFD /* tensorflow.xcconfig */; };
 		53D01D8E1FB95AA400AEAFC6 /* TensorflowGraph.mm in Sources */ = {isa = PBXBuildFile; fileRef = 53D01D8D1FB95AA400AEAFC6 /* TensorflowGraph.mm */; };
 		53D01D911FB95BE700AEAFC6 /* string_int_label_map.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 53D01D8F1FB95BE700AEAFC6 /* string_int_label_map.pb.cc */; };
 		53D01D941FB95C1800AEAFC6 /* TensorflowPrediction.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D01D931FB95C1800AEAFC6 /* TensorflowPrediction.m */; };
@@ -201,6 +200,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5365E4821FB6D9E00004EFFD /* Build configuration list for PBXNativeTarget "tensorflowiOS" */;
 			buildPhases = (
+				5354F61A20244232005A7905 /* ShellScript */,
 				5365E46C1FB6D9E00004EFFD /* Sources */,
 				5365E46D1FB6D9E00004EFFD /* Frameworks */,
 				5365E46E1FB6D9E00004EFFD /* Resources */,
@@ -221,7 +221,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0910;
-				LastUpgradeCheck = 0910;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Chris Sharp";
 				TargetAttributes = {
 					5365E46F1FB6D9E00004EFFD = {
@@ -259,13 +259,28 @@
 				5365E49E1FB762BE0004EFFD /* Assets.xcassets in Resources */,
 				5365E4A01FB762BE0004EFFD /* Main.storyboard in Resources */,
 				5365E49F1FB762BE0004EFFD /* LaunchScreen.storyboard in Resources */,
-				5365E4B81FB7A8B90004EFFD /* tensorflow.xcconfig in Resources */,
 				5365E4A31FB762BE0004EFFD /* op_inference_graph_inv2.pb in Resources */,
 				5365E4A41FB762BE0004EFFD /* op_inference_graph.pb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5354F61A20244232005A7905 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "source SupportingFiles/BuildPhase.sh";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5365E46C1FB6D9E00004EFFD /* Sources */ = {

@@ -1,2 +1,5 @@
 .DS_Store
 xcuserdata
+
+string_int_label_map.pb.cc
+string_int_label_map.pb.h

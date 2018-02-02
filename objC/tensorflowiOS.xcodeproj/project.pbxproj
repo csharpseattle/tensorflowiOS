@@ -18,6 +18,7 @@
 		53341A221FA44770003D2A2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53341A201FA44770003D2A2D /* LaunchScreen.storyboard */; };
 		53341A241FA44935003D2A2D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53341A231FA44935003D2A2D /* Default-568h@2x.png */; };
 		5353B3DC1F8B30A300493AB0 /* string_int_label_map.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 5353B3DA1F8B30A200493AB0 /* string_int_label_map.pb.cc */; };
+		5354F619202420B4005A7905 /* BuildPhase.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5354F618202420B4005A7905 /* BuildPhase.sh */; };
 		635E14501F82E28D0025E912 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635E144F1F82E28D0025E912 /* Accelerate.framework */; };
 		635E14571F82E4330025E912 /* libprotobuf-lite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 635E14551F82E4330025E912 /* libprotobuf-lite.a */; };
 		635E14581F82E4330025E912 /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 635E14561F82E4330025E912 /* libprotobuf.a */; };
@@ -50,6 +51,7 @@
 		53341A231FA44935003D2A2D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5353B3DA1F8B30A200493AB0 /* string_int_label_map.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = string_int_label_map.pb.cc; sourceTree = "<group>"; };
 		5353B3DB1F8B30A300493AB0 /* string_int_label_map.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = string_int_label_map.pb.h; sourceTree = "<group>"; };
+		5354F618202420B4005A7905 /* BuildPhase.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = BuildPhase.sh; sourceTree = "<group>"; };
 		53AA6BD91FC5F9FF00074E49 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		635E144F1F82E28D0025E912 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		635E14511F82E37E0025E912 /* libtensorflow-core-arm64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libtensorflow-core-arm64.a"; path = "../../tensorflow/tensorflow/contrib/makefile/gen/lib/ios_ARM64/libtensorflow-core-arm64.a"; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 		537273F51FA2E34500BAC5A8 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				5354F618202420B4005A7905 /* BuildPhase.sh */,
 				2206265D1A1E330400A45150 /* Info.plist */,
 				63E6BBB11F8BDB74003DB62B /* tensorflow.xcconfig */,
 				2206265E1A1E330400A45150 /* main.m */,
@@ -225,6 +228,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2206267C1A1E330400A45150 /* Build configuration list for PBXNativeTarget "tensorflowiOS" */;
 			buildPhases = (
+				5354F61720242091005A7905 /* ShellScript */,
 				220626551A1E330400A45150 /* Sources */,
 				220626561A1E330400A45150 /* Frameworks */,
 				220626571A1E330400A45150 /* Resources */,
@@ -278,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5317E2561F940FBD00514D13 /* op_inference_graph_rcnn.pb in Resources */,
+				5354F619202420B4005A7905 /* BuildPhase.sh in Resources */,
 				7A74447E1CEE6B5900C70C83 /* Main.storyboard in Resources */,
 				5317E2571F940FC100514D13 /* mscoco_label_map.txt in Resources */,
 				7A74447C1CEE6B4B00C70C83 /* Assets.xcassets in Resources */,
@@ -289,6 +294,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5354F61720242091005A7905 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "source SupportingFiles/BuildPhase.sh";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		220626551A1E330400A45150 /* Sources */ = {
