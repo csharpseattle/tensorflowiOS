@@ -16,7 +16,7 @@ An Object Detection application on iOS using Tensorflow and pre-trained COCO dat
 `git clone https://github.com/tensorflow/tensorflow`
 
 
-* `cd` into the tensorflow repo and checkout the `v1.5.0` tag.  This release has the Makefile support for the following `ANDROID_TYPES` environment variable
+* `cd` into the tensorflow repo and at a minimum checkout the `v1.5.0` tag.  The v1.5.0 release has the Makefile support for the following `ANDROID_TYPES` environment variable.  I have tested with `v1.7.0` also. 
 
 `git checkout v1.5.0`
 
