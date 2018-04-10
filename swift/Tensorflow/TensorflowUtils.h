@@ -2,9 +2,15 @@
 #ifndef tensorflowUtils_h
 #define tensorflowUtils_h
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdocumentation"
+
 #include "tensorflow/core/public/session.h"
+
 #include "tensorflow/core/util/memmapped_file_system.h"
 #include "third_party/eigen3/unsupported/Eigen/CXX11/Tensor"
+#pragma clang diagnostic pop
+
 namespace object_detection
 {
     namespace protos

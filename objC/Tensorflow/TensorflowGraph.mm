@@ -203,11 +203,11 @@ const int kAverageEveryXFrames   = 50;   // Output average processing time every
         struct timespec ts_start;
         clock_gettime(CLOCK_MONOTONIC, &ts_start);
         
-        if (tfSession.get())
+        if (self->tfSession.get())
         {
             // Run through the graph.
             std::vector<tensorflow::Tensor> outputs;
-            tensorflow::Status runStatus = tfSession->Run({{"image_tensor", imageTensor}}, {"detection_boxes", "detection_scores", "detection_classes", "num_detections"}, {}, &outputs);
+            tensorflow::Status runStatus = self->tfSession->Run({{"image_tensor", imageTensor}}, {"detection_boxes", "detection_scores", "detection_classes", "num_detections"}, {}, &outputs);
             
             if (!runStatus.ok())
             {
@@ -241,7 +241,7 @@ const int kAverageEveryXFrames   = 50;   // Output average processing time every
                     TensorflowPrediction * prediction = [[TensorflowPrediction alloc] init];
                     prediction.score  = score;
                     const int label_index = (tensorflow::int32)indices_flat(i);
-                    prediction.label  = [NSString stringWithUTF8String:GetDisplayName(&labelMap, label_index).c_str()];
+                    prediction.label  = [NSString stringWithUTF8String:GetDisplayName(&self->labelMap, label_index).c_str()];
                     prediction.top    = boundingBoxesFlat(i * 4 + 0);
                     prediction.left   = boundingBoxesFlat(i * 4 + 1);
                     prediction.bottom = boundingBoxesFlat(i * 4 + 2);
