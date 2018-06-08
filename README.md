@@ -1,6 +1,6 @@
 # Tensorflow iOS Object Detection
 
-An Object Detection application on iOS using Tensorflow and pre-trained COCO dataset models.  Video frames are captured and inference is done locally using one of the 3 provided models: ssd_mobilenet_v1_coco, ssd_inception_v2_coco, and faster_rcnn_resnet101_coco.  Both Swift and Objective-C projects.
+An Object Detection application on iOS using Tensorflow and pre-trained COCO dataset models.  Video frames are captured and inference is done locally using one of the 3 provided models: ssd_mobilenet_v1_coco, ssd_modelnet_v2_coco, or ssd_inception_v2_coco.  Both Swift and Objective-C projects.
 
 ![cat image](images/cat.png)
 
@@ -16,7 +16,7 @@ An Object Detection application on iOS using Tensorflow and pre-trained COCO dat
 `git clone https://github.com/tensorflow/tensorflow`
 
 
-* `cd` into the tensorflow repo and at a minimum checkout the `v1.5.0` tag.  The v1.5.0 release has the Makefile support for the following `ANDROID_TYPES` environment variable.  I have tested with `v1.7.0` also. 
+* `cd` into the tensorflow repo and at a minimum checkout the `v1.5.0` tag.  The v1.5.0 release has the Makefile support for the following `ANDROID_TYPES` environment variable.  I have tested with `v1.7.0` also.
 
 `git checkout v1.5.0`
 
@@ -33,7 +33,7 @@ An Object Detection application on iOS using Tensorflow and pre-trained COCO dat
 Go get a coffee. This can take a while.  On my macBook it took almost 2 hours.
 
 
-* Open either the Swift of Objective-C project in this repo and edit the **tensorflow.xconfig** file to point to the folder where you cloned the tensorflow repo
+* Open either the Swift or Objective-C project in this repo and edit the **tensorflow.xconfig** file to point to the folder where you cloned the tensorflow repo
 
 `TENSORFLOW_ROOT=/Users/username/Development/tensorflow`
 

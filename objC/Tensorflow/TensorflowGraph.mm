@@ -36,7 +36,7 @@ const int kAverageEveryXFrames   = 50;   // Output average processing time every
     if (self)
     {
         // change model name here to use one of the other models.
-        NSString *model = @"op_inference_graph";
+        NSString *model = @"frozen_inference_graph";
         NSString *label = @"mscoco_label_map";
         
         if (![self loadModelWithFileName:model modelFileType:@"pb"])

@@ -11,14 +11,12 @@
 		220626881A1E345E00A45150 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 220626831A1E345E00A45150 /* AppDelegate.m */; };
 		220626891A1E345E00A45150 /* CameraPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 220626851A1E345E00A45150 /* CameraPreviewView.m */; };
 		2206268A1A1E345E00A45150 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 220626871A1E345E00A45150 /* ViewController.mm */; };
-		5317E2541F940FB700514D13 /* op_inference_graph.pb in Resources */ = {isa = PBXBuildFile; fileRef = 5317E2531F940F7800514D13 /* op_inference_graph.pb */; };
-		5317E2551F940FB900514D13 /* op_inference_graph_inv2.pb in Resources */ = {isa = PBXBuildFile; fileRef = 5317E2521F940F7100514D13 /* op_inference_graph_inv2.pb */; };
-		5317E2561F940FBD00514D13 /* op_inference_graph_rcnn.pb in Resources */ = {isa = PBXBuildFile; fileRef = 5317E2501F940F6100514D13 /* op_inference_graph_rcnn.pb */; };
-		5317E2571F940FC100514D13 /* mscoco_label_map.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5317E2511F940F6900514D13 /* mscoco_label_map.txt */; };
+		5325635220CB3E5A009D099F /* frozen_inference_graph.pb in Resources */ = {isa = PBXBuildFile; fileRef = 53A04B6E20CB1D2A00C7DD4B /* frozen_inference_graph.pb */; };
 		53341A221FA44770003D2A2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53341A201FA44770003D2A2D /* LaunchScreen.storyboard */; };
 		53341A241FA44935003D2A2D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53341A231FA44935003D2A2D /* Default-568h@2x.png */; };
 		5353B3DC1F8B30A300493AB0 /* string_int_label_map.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 5353B3DA1F8B30A200493AB0 /* string_int_label_map.pb.cc */; };
 		5354F619202420B4005A7905 /* BuildPhase.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5354F618202420B4005A7905 /* BuildPhase.sh */; };
+		53A04B7220CB1D2A00C7DD4B /* mscoco_label_map.txt in Resources */ = {isa = PBXBuildFile; fileRef = 53A04B6C20CB1D2A00C7DD4B /* mscoco_label_map.txt */; };
 		635E14501F82E28D0025E912 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635E144F1F82E28D0025E912 /* Accelerate.framework */; };
 		635E14571F82E4330025E912 /* libprotobuf-lite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 635E14551F82E4330025E912 /* libprotobuf-lite.a */; };
 		635E14581F82E4330025E912 /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 635E14561F82E4330025E912 /* libprotobuf.a */; };
@@ -43,15 +41,15 @@
 		220626851A1E345E00A45150 /* CameraPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraPreviewView.m; sourceTree = "<group>"; };
 		220626861A1E345E00A45150 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		220626871A1E345E00A45150 /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
-		5317E2501F940F6100514D13 /* op_inference_graph_rcnn.pb */ = {isa = PBXFileReference; lastKnownFileType = file; name = op_inference_graph_rcnn.pb; path = Models/faster_rcnn_resnet101_coco_11_06_2017/op_inference_graph_rcnn.pb; sourceTree = SOURCE_ROOT; };
-		5317E2511F940F6900514D13 /* mscoco_label_map.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = mscoco_label_map.txt; path = Models/mscoco_label_map.txt; sourceTree = SOURCE_ROOT; };
-		5317E2521F940F7100514D13 /* op_inference_graph_inv2.pb */ = {isa = PBXFileReference; lastKnownFileType = file; name = op_inference_graph_inv2.pb; path = Models/ssd_inception_v2_coco_11_06_2017/op_inference_graph_inv2.pb; sourceTree = SOURCE_ROOT; };
-		5317E2531F940F7800514D13 /* op_inference_graph.pb */ = {isa = PBXFileReference; lastKnownFileType = file; name = op_inference_graph.pb; path = Models/ssd_mobilenet_v1_coco_11_06_2017/op_inference_graph.pb; sourceTree = SOURCE_ROOT; };
 		53341A211FA44770003D2A2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		53341A231FA44935003D2A2D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5353B3DA1F8B30A200493AB0 /* string_int_label_map.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = string_int_label_map.pb.cc; sourceTree = "<group>"; };
 		5353B3DB1F8B30A300493AB0 /* string_int_label_map.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = string_int_label_map.pb.h; sourceTree = "<group>"; };
 		5354F618202420B4005A7905 /* BuildPhase.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = BuildPhase.sh; sourceTree = "<group>"; };
+		53A04B6B20CB1D2A00C7DD4B /* frozen_inference_graph.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = frozen_inference_graph.pb; sourceTree = "<group>"; };
+		53A04B6C20CB1D2A00C7DD4B /* mscoco_label_map.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mscoco_label_map.txt; sourceTree = "<group>"; };
+		53A04B6E20CB1D2A00C7DD4B /* frozen_inference_graph.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = frozen_inference_graph.pb; sourceTree = "<group>"; };
+		53A04B7020CB1D2A00C7DD4B /* frozen_inference_graph.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = frozen_inference_graph.pb; sourceTree = "<group>"; };
 		53AA6BD91FC5F9FF00074E49 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		635E144F1F82E28D0025E912 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		635E14511F82E37E0025E912 /* libtensorflow-core-arm64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libtensorflow-core-arm64.a"; path = "../../tensorflow/tensorflow/contrib/makefile/gen/lib/ios_ARM64/libtensorflow-core-arm64.a"; sourceTree = "<group>"; };
@@ -98,7 +96,7 @@
 				53AA6BD91FC5F9FF00074E49 /* README.md */,
 				537273F71FA4263700BAC5A8 /* App */,
 				2206265B1A1E330400A45150 /* Tensorflow */,
-				5317E24C1F940F1600514D13 /* Models */,
+				53A04B6920CB1D2A00C7DD4B /* Models */,
 				537273F61FA2E37900BAC5A8 /* Assets */,
 				537273F51FA2E34500BAC5A8 /* SupportingFiles */,
 				2206265A1A1E330400A45150 /* Products */,
@@ -129,44 +127,6 @@
 				635E14631F82FF380025E912 /* constants.m */,
 			);
 			path = Tensorflow;
-			sourceTree = "<group>";
-		};
-		5317E24C1F940F1600514D13 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				5317E2511F940F6900514D13 /* mscoco_label_map.txt */,
-				5317E24F1F940F3E00514D13 /* SSD-MobileNet */,
-				5317E24E1F940F3600514D13 /* SSD-Inception */,
-				5317E24D1F940F2B00514D13 /* Faster-RCNN */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		5317E24D1F940F2B00514D13 /* Faster-RCNN */ = {
-			isa = PBXGroup;
-			children = (
-				5317E2501F940F6100514D13 /* op_inference_graph_rcnn.pb */,
-			);
-			name = "Faster-RCNN";
-			path = faster_rcnn_resnet101_coco_11_06_2017;
-			sourceTree = "<group>";
-		};
-		5317E24E1F940F3600514D13 /* SSD-Inception */ = {
-			isa = PBXGroup;
-			children = (
-				5317E2521F940F7100514D13 /* op_inference_graph_inv2.pb */,
-			);
-			name = "SSD-Inception";
-			path = ssd_inception_v2_coco_11_06_2017;
-			sourceTree = "<group>";
-		};
-		5317E24F1F940F3E00514D13 /* SSD-MobileNet */ = {
-			isa = PBXGroup;
-			children = (
-				5317E2531F940F7800514D13 /* op_inference_graph.pb */,
-			);
-			name = "SSD-MobileNet";
-			path = ssd_mobilenet_v1_coco_11_06_2017;
 			sourceTree = "<group>";
 		};
 		537273F51FA2E34500BAC5A8 /* SupportingFiles */ = {
@@ -204,6 +164,42 @@
 				638820581F8C72490009B2DE /* BoundingBoxView.m */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		53A04B6920CB1D2A00C7DD4B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				53A04B6A20CB1D2A00C7DD4B /* ssd_mobilenet_v1_coco_2017_11_17 */,
+				53A04B6C20CB1D2A00C7DD4B /* mscoco_label_map.txt */,
+				53A04B6D20CB1D2A00C7DD4B /* ssd_mobilenet_v2_coco_2018_03_29 */,
+				53A04B6F20CB1D2A00C7DD4B /* ssd_inception_v2_coco_2017_11_17 */,
+			);
+			name = Models;
+			path = ../Models;
+			sourceTree = "<group>";
+		};
+		53A04B6A20CB1D2A00C7DD4B /* ssd_mobilenet_v1_coco_2017_11_17 */ = {
+			isa = PBXGroup;
+			children = (
+				53A04B6B20CB1D2A00C7DD4B /* frozen_inference_graph.pb */,
+			);
+			path = ssd_mobilenet_v1_coco_2017_11_17;
+			sourceTree = "<group>";
+		};
+		53A04B6D20CB1D2A00C7DD4B /* ssd_mobilenet_v2_coco_2018_03_29 */ = {
+			isa = PBXGroup;
+			children = (
+				53A04B6E20CB1D2A00C7DD4B /* frozen_inference_graph.pb */,
+			);
+			path = ssd_mobilenet_v2_coco_2018_03_29;
+			sourceTree = "<group>";
+		};
+		53A04B6F20CB1D2A00C7DD4B /* ssd_inception_v2_coco_2017_11_17 */ = {
+			isa = PBXGroup;
+			children = (
+				53A04B7020CB1D2A00C7DD4B /* frozen_inference_graph.pb */,
+			);
+			path = ssd_inception_v2_coco_2017_11_17;
 			sourceTree = "<group>";
 		};
 		635E144E1F82E28C0025E912 /* Frameworks */ = {
@@ -281,15 +277,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5317E2561F940FBD00514D13 /* op_inference_graph_rcnn.pb in Resources */,
 				5354F619202420B4005A7905 /* BuildPhase.sh in Resources */,
 				7A74447E1CEE6B5900C70C83 /* Main.storyboard in Resources */,
-				5317E2571F940FC100514D13 /* mscoco_label_map.txt in Resources */,
+				53A04B7220CB1D2A00C7DD4B /* mscoco_label_map.txt in Resources */,
 				7A74447C1CEE6B4B00C70C83 /* Assets.xcassets in Resources */,
+				5325635220CB3E5A009D099F /* frozen_inference_graph.pb in Resources */,
 				53341A221FA44770003D2A2D /* LaunchScreen.storyboard in Resources */,
 				53341A241FA44935003D2A2D /* Default-568h@2x.png in Resources */,
-				5317E2551F940FB900514D13 /* op_inference_graph_inv2.pb in Resources */,
-				5317E2541F940FB700514D13 /* op_inference_graph.pb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

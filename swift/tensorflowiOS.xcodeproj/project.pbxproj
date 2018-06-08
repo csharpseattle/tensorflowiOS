@@ -7,19 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5325635320CB3EE6009D099F /* TensorflowGraph.mm in Sources */ = {isa = PBXBuildFile; fileRef = 53D01D8D1FB95AA400AEAFC6 /* TensorflowGraph.mm */; };
 		5365E49E1FB762BE0004EFFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5365E48B1FB762BE0004EFFD /* Assets.xcassets */; };
 		5365E49F1FB762BE0004EFFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5365E48C1FB762BE0004EFFD /* LaunchScreen.storyboard */; };
 		5365E4A01FB762BE0004EFFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5365E48E1FB762BE0004EFFD /* Main.storyboard */; };
-		5365E4A11FB762BE0004EFFD /* op_inference_graph_rcnn.pb in Resources */ = {isa = PBXBuildFile; fileRef = 5365E4921FB762BE0004EFFD /* op_inference_graph_rcnn.pb */; };
-		5365E4A21FB762BE0004EFFD /* mscoco_label_map.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5365E4931FB762BE0004EFFD /* mscoco_label_map.txt */; };
-		5365E4A31FB762BE0004EFFD /* op_inference_graph_inv2.pb in Resources */ = {isa = PBXBuildFile; fileRef = 5365E4951FB762BE0004EFFD /* op_inference_graph_inv2.pb */; };
-		5365E4A41FB762BE0004EFFD /* op_inference_graph.pb in Resources */ = {isa = PBXBuildFile; fileRef = 5365E4971FB762BE0004EFFD /* op_inference_graph.pb */; };
 		5365E4A51FB762BE0004EFFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5365E4991FB762BE0004EFFD /* AppDelegate.swift */; };
 		5365E4A61FB762BE0004EFFD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5365E49A1FB762BE0004EFFD /* ViewController.swift */; };
 		5365E4A91FB7660F0004EFFD /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5365E4A81FB7660F0004EFFD /* CameraPreviewView.swift */; };
 		5365E4AB1FB7807E0004EFFD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5365E4AA1FB7807E0004EFFD /* Constants.swift */; };
 		5365E4AD1FB796B80004EFFD /* BoundingBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5365E4AC1FB796B80004EFFD /* BoundingBoxView.swift */; };
-		53D01D8E1FB95AA400AEAFC6 /* TensorflowGraph.mm in Sources */ = {isa = PBXBuildFile; fileRef = 53D01D8D1FB95AA400AEAFC6 /* TensorflowGraph.mm */; };
+		53A04B6620CB144300C7DD4B /* mscoco_label_map.txt in Resources */ = {isa = PBXBuildFile; fileRef = 53A04B6020CB144300C7DD4B /* mscoco_label_map.txt */; };
+		53A04B7920CB3D0200C7DD4B /* frozen_inference_graph.pb in Resources */ = {isa = PBXBuildFile; fileRef = 53A04B6220CB144300C7DD4B /* frozen_inference_graph.pb */; };
 		53D01D911FB95BE700AEAFC6 /* string_int_label_map.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 53D01D8F1FB95BE700AEAFC6 /* string_int_label_map.pb.cc */; };
 		53D01D941FB95C1800AEAFC6 /* TensorflowPrediction.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D01D931FB95C1800AEAFC6 /* TensorflowPrediction.m */; };
 		53D01D971FB95D1D00AEAFC6 /* TensorflowUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 53D01D961FB95D1D00AEAFC6 /* TensorflowUtils.mm */; };
@@ -32,10 +30,6 @@
 		5365E48B1FB762BE0004EFFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5365E48D1FB762BE0004EFFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5365E48F1FB762BE0004EFFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		5365E4921FB762BE0004EFFD /* op_inference_graph_rcnn.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = op_inference_graph_rcnn.pb; sourceTree = "<group>"; };
-		5365E4931FB762BE0004EFFD /* mscoco_label_map.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mscoco_label_map.txt; sourceTree = "<group>"; };
-		5365E4951FB762BE0004EFFD /* op_inference_graph_inv2.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = op_inference_graph_inv2.pb; sourceTree = "<group>"; };
-		5365E4971FB762BE0004EFFD /* op_inference_graph.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = op_inference_graph.pb; sourceTree = "<group>"; };
 		5365E4991FB762BE0004EFFD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5365E49A1FB762BE0004EFFD /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5365E49C1FB762BE0004EFFD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -44,6 +38,10 @@
 		5365E4AC1FB796B80004EFFD /* BoundingBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundingBoxView.swift; sourceTree = "<group>"; };
 		5365E4B01FB7A4530004EFFD /* tensorflowiOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tensorflowiOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		5365E4B71FB7A8B90004EFFD /* tensorflow.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = tensorflow.xcconfig; sourceTree = "<group>"; };
+		53A04B5F20CB144300C7DD4B /* frozen_inference_graph.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = frozen_inference_graph.pb; sourceTree = "<group>"; };
+		53A04B6020CB144300C7DD4B /* mscoco_label_map.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mscoco_label_map.txt; sourceTree = "<group>"; };
+		53A04B6220CB144300C7DD4B /* frozen_inference_graph.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = frozen_inference_graph.pb; sourceTree = "<group>"; };
+		53A04B6420CB144300C7DD4B /* frozen_inference_graph.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = frozen_inference_graph.pb; sourceTree = "<group>"; };
 		53AA6BDA1FC5FA7000074E49 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		53D01D8C1FB95AA400AEAFC6 /* TensorflowGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TensorflowGraph.h; sourceTree = "<group>"; };
 		53D01D8D1FB95AA400AEAFC6 /* TensorflowGraph.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TensorflowGraph.mm; sourceTree = "<group>"; };
@@ -92,9 +90,9 @@
 		5365E4721FB6D9E00004EFFD /* tensorflowiOS */ = {
 			isa = PBXGroup;
 			children = (
+				53A04B5D20CB144300C7DD4B /* Models */,
 				5365E4981FB762BE0004EFFD /* App */,
 				5365E49D1FB762BE0004EFFD /* Tensorflow */,
-				5365E4901FB762BE0004EFFD /* Models */,
 				5365E48A1FB762BE0004EFFD /* Assets */,
 				5365E49B1FB762BE0004EFFD /* SupportingFiles */,
 			);
@@ -110,41 +108,6 @@
 			);
 			path = Assets;
 			sourceTree = SOURCE_ROOT;
-		};
-		5365E4901FB762BE0004EFFD /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				5365E4911FB762BE0004EFFD /* faster_rcnn_resnet101_coco_11_06_2017 */,
-				5365E4931FB762BE0004EFFD /* mscoco_label_map.txt */,
-				5365E4941FB762BE0004EFFD /* ssd_inception_v2_coco_11_06_2017 */,
-				5365E4961FB762BE0004EFFD /* ssd_mobilenet_v1_coco_11_06_2017 */,
-			);
-			path = Models;
-			sourceTree = SOURCE_ROOT;
-		};
-		5365E4911FB762BE0004EFFD /* faster_rcnn_resnet101_coco_11_06_2017 */ = {
-			isa = PBXGroup;
-			children = (
-				5365E4921FB762BE0004EFFD /* op_inference_graph_rcnn.pb */,
-			);
-			path = faster_rcnn_resnet101_coco_11_06_2017;
-			sourceTree = "<group>";
-		};
-		5365E4941FB762BE0004EFFD /* ssd_inception_v2_coco_11_06_2017 */ = {
-			isa = PBXGroup;
-			children = (
-				5365E4951FB762BE0004EFFD /* op_inference_graph_inv2.pb */,
-			);
-			path = ssd_inception_v2_coco_11_06_2017;
-			sourceTree = "<group>";
-		};
-		5365E4961FB762BE0004EFFD /* ssd_mobilenet_v1_coco_11_06_2017 */ = {
-			isa = PBXGroup;
-			children = (
-				5365E4971FB762BE0004EFFD /* op_inference_graph.pb */,
-			);
-			path = ssd_mobilenet_v1_coco_11_06_2017;
-			sourceTree = "<group>";
 		};
 		5365E4981FB762BE0004EFFD /* App */ = {
 			isa = PBXGroup;
@@ -182,6 +145,42 @@
 			);
 			path = Tensorflow;
 			sourceTree = SOURCE_ROOT;
+		};
+		53A04B5D20CB144300C7DD4B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				53A04B5E20CB144300C7DD4B /* ssd_mobilenet_v1_coco_2017_11_17 */,
+				53A04B6020CB144300C7DD4B /* mscoco_label_map.txt */,
+				53A04B6120CB144300C7DD4B /* ssd_mobilenet_v2_coco_2018_03_29 */,
+				53A04B6320CB144300C7DD4B /* ssd_inception_v2_coco_2017_11_17 */,
+			);
+			name = Models;
+			path = ../Models;
+			sourceTree = "<group>";
+		};
+		53A04B5E20CB144300C7DD4B /* ssd_mobilenet_v1_coco_2017_11_17 */ = {
+			isa = PBXGroup;
+			children = (
+				53A04B5F20CB144300C7DD4B /* frozen_inference_graph.pb */,
+			);
+			path = ssd_mobilenet_v1_coco_2017_11_17;
+			sourceTree = "<group>";
+		};
+		53A04B6120CB144300C7DD4B /* ssd_mobilenet_v2_coco_2018_03_29 */ = {
+			isa = PBXGroup;
+			children = (
+				53A04B6220CB144300C7DD4B /* frozen_inference_graph.pb */,
+			);
+			path = ssd_mobilenet_v2_coco_2018_03_29;
+			sourceTree = "<group>";
+		};
+		53A04B6320CB144300C7DD4B /* ssd_inception_v2_coco_2017_11_17 */ = {
+			isa = PBXGroup;
+			children = (
+				53A04B6420CB144300C7DD4B /* frozen_inference_graph.pb */,
+			);
+			path = ssd_inception_v2_coco_2017_11_17;
+			sourceTree = "<group>";
 		};
 		53D01D981FB95DB600AEAFC6 /* Frameworks */ = {
 			isa = PBXGroup;
@@ -254,13 +253,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5365E4A21FB762BE0004EFFD /* mscoco_label_map.txt in Resources */,
-				5365E4A11FB762BE0004EFFD /* op_inference_graph_rcnn.pb in Resources */,
+				53A04B6620CB144300C7DD4B /* mscoco_label_map.txt in Resources */,
 				5365E49E1FB762BE0004EFFD /* Assets.xcassets in Resources */,
 				5365E4A01FB762BE0004EFFD /* Main.storyboard in Resources */,
+				53A04B7920CB3D0200C7DD4B /* frozen_inference_graph.pb in Resources */,
 				5365E49F1FB762BE0004EFFD /* LaunchScreen.storyboard in Resources */,
-				5365E4A31FB762BE0004EFFD /* op_inference_graph_inv2.pb in Resources */,
-				5365E4A41FB762BE0004EFFD /* op_inference_graph.pb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,11 +287,11 @@
 				5365E4A51FB762BE0004EFFD /* AppDelegate.swift in Sources */,
 				53D01D941FB95C1800AEAFC6 /* TensorflowPrediction.m in Sources */,
 				53D01D971FB95D1D00AEAFC6 /* TensorflowUtils.mm in Sources */,
+				5325635320CB3EE6009D099F /* TensorflowGraph.mm in Sources */,
 				5365E4A61FB762BE0004EFFD /* ViewController.swift in Sources */,
 				53D01D911FB95BE700AEAFC6 /* string_int_label_map.pb.cc in Sources */,
 				5365E4AD1FB796B80004EFFD /* BoundingBoxView.swift in Sources */,
 				5365E4A91FB7660F0004EFFD /* CameraPreviewView.swift in Sources */,
-				53D01D8E1FB95AA400AEAFC6 /* TensorflowGraph.mm in Sources */,
 				5365E4AB1FB7807E0004EFFD /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
