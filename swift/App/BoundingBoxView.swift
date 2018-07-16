@@ -98,7 +98,8 @@ class BoundingBoxView: UIView
                 let label:UILabel = UILabel(frame: CGRect(x: x, y: y, width: 75, height: 35))
                 label.backgroundColor = UIColor.white
                 label.textColor = UIColor.orange
-                label.text = pred.label
+                label.text = String(format: "%@ %.1f%%", pred.label, pred.score * 100)
+                label.sizeToFit()
                 self.addSubview(label)
                 
                 //

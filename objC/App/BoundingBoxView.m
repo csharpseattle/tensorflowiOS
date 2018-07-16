@@ -115,7 +115,8 @@ const CGFloat BoundingBoxLineWidth = 3.5f;
         UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(x, y, 75, 35)];
         [label setBackgroundColor:[UIColor whiteColor]];
         [label setTextColor:[UIColor orangeColor]];
-        [label setText:pred.label];
+        [label setText:[NSString stringWithFormat:@"%@ %.1f%%", pred.label, pred.score * 100]];
+        [label sizeToFit];
         [self addSubview:label];
         
         //
