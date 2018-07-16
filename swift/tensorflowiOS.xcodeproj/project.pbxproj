@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5325635320CB3EE6009D099F /* TensorflowGraph.mm in Sources */ = {isa = PBXBuildFile; fileRef = 53D01D8D1FB95AA400AEAFC6 /* TensorflowGraph.mm */; };
-		5325635420CB509F009D099F /* frozen_inference_graph.pb in Resources */ = {isa = PBXBuildFile; fileRef = 53A04B5F20CB144300C7DD4B /* frozen_inference_graph.pb */; };
+		534E46DF20FCF9CC0093F1C2 /* frozen_inference_graph.pb in Resources */ = {isa = PBXBuildFile; fileRef = 534E46DD20FCF9CC0093F1C2 /* frozen_inference_graph.pb */; };
 		5365E49E1FB762BE0004EFFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5365E48B1FB762BE0004EFFD /* Assets.xcassets */; };
 		5365E49F1FB762BE0004EFFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5365E48C1FB762BE0004EFFD /* LaunchScreen.storyboard */; };
 		5365E4A01FB762BE0004EFFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5365E48E1FB762BE0004EFFD /* Main.storyboard */; };
@@ -26,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		534E46DB20FCF9CC0093F1C2 /* frozen_inference_graph.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = frozen_inference_graph.pb; sourceTree = "<group>"; };
+		534E46DD20FCF9CC0093F1C2 /* frozen_inference_graph.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = frozen_inference_graph.pb; sourceTree = "<group>"; };
 		5365E4701FB6D9E00004EFFD /* tensorflowiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tensorflowiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5365E48B1FB762BE0004EFFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5365E48D1FB762BE0004EFFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,10 +40,7 @@
 		5365E4AC1FB796B80004EFFD /* BoundingBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundingBoxView.swift; sourceTree = "<group>"; };
 		5365E4B01FB7A4530004EFFD /* tensorflowiOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tensorflowiOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		5365E4B71FB7A8B90004EFFD /* tensorflow.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = tensorflow.xcconfig; sourceTree = "<group>"; };
-		53A04B5F20CB144300C7DD4B /* frozen_inference_graph.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = frozen_inference_graph.pb; sourceTree = "<group>"; };
 		53A04B6020CB144300C7DD4B /* mscoco_label_map.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mscoco_label_map.txt; sourceTree = "<group>"; };
-		53A04B6220CB144300C7DD4B /* frozen_inference_graph.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = frozen_inference_graph.pb; sourceTree = "<group>"; };
-		53A04B6420CB144300C7DD4B /* frozen_inference_graph.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = frozen_inference_graph.pb; sourceTree = "<group>"; };
 		53AA6BDA1FC5FA7000074E49 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		53D01D8C1FB95AA400AEAFC6 /* TensorflowGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TensorflowGraph.h; sourceTree = "<group>"; };
 		53D01D8D1FB95AA400AEAFC6 /* TensorflowGraph.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TensorflowGraph.mm; sourceTree = "<group>"; };
@@ -69,6 +68,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		534E46DA20FCF9CC0093F1C2 /* ssd_mobilenet_v1_ppn_shared_box_predictor_300x300_coco14_sync_2018_07_03 */ = {
+			isa = PBXGroup;
+			children = (
+				534E46DB20FCF9CC0093F1C2 /* frozen_inference_graph.pb */,
+			);
+			path = ssd_mobilenet_v1_ppn_shared_box_predictor_300x300_coco14_sync_2018_07_03;
+			sourceTree = "<group>";
+		};
+		534E46DC20FCF9CC0093F1C2 /* ssdlite_mobilenet_v2_coco_2018_05_09 */ = {
+			isa = PBXGroup;
+			children = (
+				534E46DD20FCF9CC0093F1C2 /* frozen_inference_graph.pb */,
+			);
+			path = ssdlite_mobilenet_v2_coco_2018_05_09;
+			sourceTree = "<group>";
+		};
 		5365E4671FB6D9E00004EFFD = {
 			isa = PBXGroup;
 			children = (
@@ -149,37 +164,12 @@
 		53A04B5D20CB144300C7DD4B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				53A04B5E20CB144300C7DD4B /* ssd_mobilenet_v1_coco_2017_11_17 */,
+				534E46DA20FCF9CC0093F1C2 /* ssd_mobilenet_v1_ppn_shared_box_predictor_300x300_coco14_sync_2018_07_03 */,
+				534E46DC20FCF9CC0093F1C2 /* ssdlite_mobilenet_v2_coco_2018_05_09 */,
 				53A04B6020CB144300C7DD4B /* mscoco_label_map.txt */,
-				53A04B6120CB144300C7DD4B /* ssd_mobilenet_v2_coco_2018_03_29 */,
-				53A04B6320CB144300C7DD4B /* ssd_inception_v2_coco_2017_11_17 */,
 			);
 			name = Models;
 			path = ../Models;
-			sourceTree = "<group>";
-		};
-		53A04B5E20CB144300C7DD4B /* ssd_mobilenet_v1_coco_2017_11_17 */ = {
-			isa = PBXGroup;
-			children = (
-				53A04B5F20CB144300C7DD4B /* frozen_inference_graph.pb */,
-			);
-			path = ssd_mobilenet_v1_coco_2017_11_17;
-			sourceTree = "<group>";
-		};
-		53A04B6120CB144300C7DD4B /* ssd_mobilenet_v2_coco_2018_03_29 */ = {
-			isa = PBXGroup;
-			children = (
-				53A04B6220CB144300C7DD4B /* frozen_inference_graph.pb */,
-			);
-			path = ssd_mobilenet_v2_coco_2018_03_29;
-			sourceTree = "<group>";
-		};
-		53A04B6320CB144300C7DD4B /* ssd_inception_v2_coco_2017_11_17 */ = {
-			isa = PBXGroup;
-			children = (
-				53A04B6420CB144300C7DD4B /* frozen_inference_graph.pb */,
-			);
-			path = ssd_inception_v2_coco_2017_11_17;
 			sourceTree = "<group>";
 		};
 		53D01D981FB95DB600AEAFC6 /* Frameworks */ = {
@@ -254,9 +244,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				53A04B6620CB144300C7DD4B /* mscoco_label_map.txt in Resources */,
-				5325635420CB509F009D099F /* frozen_inference_graph.pb in Resources */,
 				5365E49E1FB762BE0004EFFD /* Assets.xcassets in Resources */,
 				5365E4A01FB762BE0004EFFD /* Main.storyboard in Resources */,
+				534E46DF20FCF9CC0093F1C2 /* frozen_inference_graph.pb in Resources */,
 				5365E49F1FB762BE0004EFFD /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

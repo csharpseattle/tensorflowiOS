@@ -11,9 +11,9 @@
 		220626881A1E345E00A45150 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 220626831A1E345E00A45150 /* AppDelegate.m */; };
 		220626891A1E345E00A45150 /* CameraPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 220626851A1E345E00A45150 /* CameraPreviewView.m */; };
 		2206268A1A1E345E00A45150 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 220626871A1E345E00A45150 /* ViewController.mm */; };
-		5325635220CB3E5A009D099F /* frozen_inference_graph.pb in Resources */ = {isa = PBXBuildFile; fileRef = 53A04B6E20CB1D2A00C7DD4B /* frozen_inference_graph.pb */; };
 		53341A221FA44770003D2A2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53341A201FA44770003D2A2D /* LaunchScreen.storyboard */; };
 		53341A241FA44935003D2A2D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53341A231FA44935003D2A2D /* Default-568h@2x.png */; };
+		534E46D920FCF9560093F1C2 /* frozen_inference_graph.pb in Resources */ = {isa = PBXBuildFile; fileRef = 53A04B6E20CB1D2A00C7DD4B /* frozen_inference_graph.pb */; };
 		5353B3DC1F8B30A300493AB0 /* string_int_label_map.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 5353B3DA1F8B30A200493AB0 /* string_int_label_map.pb.cc */; };
 		5354F619202420B4005A7905 /* BuildPhase.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5354F618202420B4005A7905 /* BuildPhase.sh */; };
 		5393DAF220FC502900847713 /* TensorflowUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5393DAF020FC502900847713 /* TensorflowUtils.mm */; };
@@ -51,7 +51,6 @@
 		53A04B6B20CB1D2A00C7DD4B /* frozen_inference_graph.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = frozen_inference_graph.pb; sourceTree = "<group>"; };
 		53A04B6C20CB1D2A00C7DD4B /* mscoco_label_map.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mscoco_label_map.txt; sourceTree = "<group>"; };
 		53A04B6E20CB1D2A00C7DD4B /* frozen_inference_graph.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = frozen_inference_graph.pb; sourceTree = "<group>"; };
-		53A04B7020CB1D2A00C7DD4B /* frozen_inference_graph.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = frozen_inference_graph.pb; sourceTree = "<group>"; };
 		53AA6BD91FC5F9FF00074E49 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		635E144F1F82E28D0025E912 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		635E14511F82E37E0025E912 /* libtensorflow-core-arm64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libtensorflow-core-arm64.a"; path = "../../tensorflow/tensorflow/contrib/makefile/gen/lib/ios_ARM64/libtensorflow-core-arm64.a"; sourceTree = "<group>"; };
@@ -169,37 +168,28 @@
 		53A04B6920CB1D2A00C7DD4B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				53A04B6A20CB1D2A00C7DD4B /* ssd_mobilenet_v1_coco_2017_11_17 */,
+				53A04B6A20CB1D2A00C7DD4B /* ssd_mobilenet_v1_ppn_shared_box_predictor_300x300_coco14_sync_2018_07_03 */,
 				53A04B6C20CB1D2A00C7DD4B /* mscoco_label_map.txt */,
-				53A04B6D20CB1D2A00C7DD4B /* ssd_mobilenet_v2_coco_2018_03_29 */,
-				53A04B6F20CB1D2A00C7DD4B /* ssd_inception_v2_coco_2017_11_17 */,
+				53A04B6D20CB1D2A00C7DD4B /* ssdlite_mobilenet_v2_coco_2018_05_09 */,
 			);
 			name = Models;
 			path = ../Models;
 			sourceTree = "<group>";
 		};
-		53A04B6A20CB1D2A00C7DD4B /* ssd_mobilenet_v1_coco_2017_11_17 */ = {
+		53A04B6A20CB1D2A00C7DD4B /* ssd_mobilenet_v1_ppn_shared_box_predictor_300x300_coco14_sync_2018_07_03 */ = {
 			isa = PBXGroup;
 			children = (
 				53A04B6B20CB1D2A00C7DD4B /* frozen_inference_graph.pb */,
 			);
-			path = ssd_mobilenet_v1_coco_2017_11_17;
+			path = ssd_mobilenet_v1_ppn_shared_box_predictor_300x300_coco14_sync_2018_07_03;
 			sourceTree = "<group>";
 		};
-		53A04B6D20CB1D2A00C7DD4B /* ssd_mobilenet_v2_coco_2018_03_29 */ = {
+		53A04B6D20CB1D2A00C7DD4B /* ssdlite_mobilenet_v2_coco_2018_05_09 */ = {
 			isa = PBXGroup;
 			children = (
 				53A04B6E20CB1D2A00C7DD4B /* frozen_inference_graph.pb */,
 			);
-			path = ssd_mobilenet_v2_coco_2018_03_29;
-			sourceTree = "<group>";
-		};
-		53A04B6F20CB1D2A00C7DD4B /* ssd_inception_v2_coco_2017_11_17 */ = {
-			isa = PBXGroup;
-			children = (
-				53A04B7020CB1D2A00C7DD4B /* frozen_inference_graph.pb */,
-			);
-			path = ssd_inception_v2_coco_2017_11_17;
+			path = ssdlite_mobilenet_v2_coco_2018_05_09;
 			sourceTree = "<group>";
 		};
 		635E144E1F82E28C0025E912 /* Frameworks */ = {
@@ -281,9 +271,9 @@
 				7A74447E1CEE6B5900C70C83 /* Main.storyboard in Resources */,
 				53A04B7220CB1D2A00C7DD4B /* mscoco_label_map.txt in Resources */,
 				7A74447C1CEE6B4B00C70C83 /* Assets.xcassets in Resources */,
-				5325635220CB3E5A009D099F /* frozen_inference_graph.pb in Resources */,
 				53341A221FA44770003D2A2D /* LaunchScreen.storyboard in Resources */,
 				53341A241FA44935003D2A2D /* Default-568h@2x.png in Resources */,
+				534E46D920FCF9560093F1C2 /* frozen_inference_graph.pb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
