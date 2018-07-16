@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5325635320CB3EE6009D099F /* TensorflowGraph.mm in Sources */ = {isa = PBXBuildFile; fileRef = 53D01D8D1FB95AA400AEAFC6 /* TensorflowGraph.mm */; };
+		5325635420CB509F009D099F /* frozen_inference_graph.pb in Resources */ = {isa = PBXBuildFile; fileRef = 53A04B5F20CB144300C7DD4B /* frozen_inference_graph.pb */; };
 		5365E49E1FB762BE0004EFFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5365E48B1FB762BE0004EFFD /* Assets.xcassets */; };
 		5365E49F1FB762BE0004EFFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5365E48C1FB762BE0004EFFD /* LaunchScreen.storyboard */; };
 		5365E4A01FB762BE0004EFFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5365E48E1FB762BE0004EFFD /* Main.storyboard */; };
@@ -17,7 +18,6 @@
 		5365E4AB1FB7807E0004EFFD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5365E4AA1FB7807E0004EFFD /* Constants.swift */; };
 		5365E4AD1FB796B80004EFFD /* BoundingBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5365E4AC1FB796B80004EFFD /* BoundingBoxView.swift */; };
 		53A04B6620CB144300C7DD4B /* mscoco_label_map.txt in Resources */ = {isa = PBXBuildFile; fileRef = 53A04B6020CB144300C7DD4B /* mscoco_label_map.txt */; };
-		53A04B7920CB3D0200C7DD4B /* frozen_inference_graph.pb in Resources */ = {isa = PBXBuildFile; fileRef = 53A04B6220CB144300C7DD4B /* frozen_inference_graph.pb */; };
 		53D01D911FB95BE700AEAFC6 /* string_int_label_map.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 53D01D8F1FB95BE700AEAFC6 /* string_int_label_map.pb.cc */; };
 		53D01D941FB95C1800AEAFC6 /* TensorflowPrediction.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D01D931FB95C1800AEAFC6 /* TensorflowPrediction.m */; };
 		53D01D971FB95D1D00AEAFC6 /* TensorflowUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 53D01D961FB95D1D00AEAFC6 /* TensorflowUtils.mm */; };
@@ -254,9 +254,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				53A04B6620CB144300C7DD4B /* mscoco_label_map.txt in Resources */,
+				5325635420CB509F009D099F /* frozen_inference_graph.pb in Resources */,
 				5365E49E1FB762BE0004EFFD /* Assets.xcassets in Resources */,
 				5365E4A01FB762BE0004EFFD /* Main.storyboard in Resources */,
-				53A04B7920CB3D0200C7DD4B /* frozen_inference_graph.pb in Resources */,
 				5365E49F1FB762BE0004EFFD /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

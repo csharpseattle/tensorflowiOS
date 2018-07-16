@@ -16,12 +16,12 @@
 		53341A241FA44935003D2A2D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53341A231FA44935003D2A2D /* Default-568h@2x.png */; };
 		5353B3DC1F8B30A300493AB0 /* string_int_label_map.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 5353B3DA1F8B30A200493AB0 /* string_int_label_map.pb.cc */; };
 		5354F619202420B4005A7905 /* BuildPhase.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5354F618202420B4005A7905 /* BuildPhase.sh */; };
+		5393DAF220FC502900847713 /* TensorflowUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5393DAF020FC502900847713 /* TensorflowUtils.mm */; };
 		53A04B7220CB1D2A00C7DD4B /* mscoco_label_map.txt in Resources */ = {isa = PBXBuildFile; fileRef = 53A04B6C20CB1D2A00C7DD4B /* mscoco_label_map.txt */; };
 		635E14501F82E28D0025E912 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 635E144F1F82E28D0025E912 /* Accelerate.framework */; };
 		635E14571F82E4330025E912 /* libprotobuf-lite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 635E14551F82E4330025E912 /* libprotobuf-lite.a */; };
 		635E14581F82E4330025E912 /* libprotobuf.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 635E14561F82E4330025E912 /* libprotobuf.a */; };
 		635E14591F82E65C0025E912 /* libtensorflow-core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 635E14531F82E3CE0025E912 /* libtensorflow-core.a */; };
-		635E14611F82FEF90025E912 /* tensorflowUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 635E14601F82FEF80025E912 /* tensorflowUtils.mm */; };
 		635E14641F82FF380025E912 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 635E14631F82FF380025E912 /* constants.m */; };
 		635E14681F8301840025E912 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 635E14671F8301840025E912 /* libstdc++.tbd */; };
 		637BC7851F804F920029265F /* TensorflowGraph.mm in Sources */ = {isa = PBXBuildFile; fileRef = 637BC7841F804F920029265F /* TensorflowGraph.mm */; };
@@ -46,6 +46,8 @@
 		5353B3DA1F8B30A200493AB0 /* string_int_label_map.pb.cc */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = string_int_label_map.pb.cc; sourceTree = "<group>"; };
 		5353B3DB1F8B30A300493AB0 /* string_int_label_map.pb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = string_int_label_map.pb.h; sourceTree = "<group>"; };
 		5354F618202420B4005A7905 /* BuildPhase.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = BuildPhase.sh; sourceTree = "<group>"; };
+		5393DAF020FC502900847713 /* TensorflowUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TensorflowUtils.mm; sourceTree = "<group>"; };
+		5393DAF120FC502900847713 /* TensorflowUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TensorflowUtils.h; sourceTree = "<group>"; };
 		53A04B6B20CB1D2A00C7DD4B /* frozen_inference_graph.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = frozen_inference_graph.pb; sourceTree = "<group>"; };
 		53A04B6C20CB1D2A00C7DD4B /* mscoco_label_map.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mscoco_label_map.txt; sourceTree = "<group>"; };
 		53A04B6E20CB1D2A00C7DD4B /* frozen_inference_graph.pb */ = {isa = PBXFileReference; lastKnownFileType = file; path = frozen_inference_graph.pb; sourceTree = "<group>"; };
@@ -57,8 +59,6 @@
 		635E14551F82E4330025E912 /* libprotobuf-lite.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libprotobuf-lite.a"; path = "../../tensorflow/tensorflow/contrib/makefile/gen/protobuf_ios/lib/libprotobuf-lite.a"; sourceTree = "<group>"; };
 		635E14561F82E4330025E912 /* libprotobuf.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libprotobuf.a; path = ../../tensorflow/tensorflow/contrib/makefile/gen/protobuf_ios/lib/libprotobuf.a; sourceTree = "<group>"; };
 		635E145A1F82E9250025E912 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		635E145F1F82FEF80025E912 /* tensorflowUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tensorflowUtils.h; sourceTree = "<group>"; };
-		635E14601F82FEF80025E912 /* tensorflowUtils.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = tensorflowUtils.mm; sourceTree = "<group>"; };
 		635E14621F82FF370025E912 /* constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		635E14631F82FF380025E912 /* constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = constants.m; sourceTree = "<group>"; };
 		635E14651F83015C0025E912 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
@@ -121,8 +121,8 @@
 				638820531F8C66880009B2DE /* TensorflowPrediction.m */,
 				5353B3DA1F8B30A200493AB0 /* string_int_label_map.pb.cc */,
 				5353B3DB1F8B30A300493AB0 /* string_int_label_map.pb.h */,
-				635E145F1F82FEF80025E912 /* tensorflowUtils.h */,
-				635E14601F82FEF80025E912 /* tensorflowUtils.mm */,
+				5393DAF120FC502900847713 /* TensorflowUtils.h */,
+				5393DAF020FC502900847713 /* TensorflowUtils.mm */,
 				635E14621F82FF370025E912 /* constants.h */,
 				635E14631F82FF380025E912 /* constants.m */,
 			);
@@ -312,9 +312,9 @@
 			files = (
 				220626881A1E345E00A45150 /* AppDelegate.m in Sources */,
 				2206265F1A1E330400A45150 /* main.m in Sources */,
+				5393DAF220FC502900847713 /* TensorflowUtils.mm in Sources */,
 				638820591F8C72490009B2DE /* BoundingBoxView.m in Sources */,
 				635E14641F82FF380025E912 /* constants.m in Sources */,
-				635E14611F82FEF90025E912 /* tensorflowUtils.mm in Sources */,
 				220626891A1E345E00A45150 /* CameraPreviewView.m in Sources */,
 				637BC7851F804F920029265F /* TensorflowGraph.mm in Sources */,
 				5353B3DC1F8B30A300493AB0 /* string_int_label_map.pb.cc in Sources */,

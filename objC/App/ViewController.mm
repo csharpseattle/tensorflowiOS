@@ -87,19 +87,17 @@
 }
 
 //
-// Yes, please autorotate, but we will have to change the orientation of the pixel buffer when we run the graph.
+// We allow autorotation to all orientations, but may have to rotate the
+// pixel buffer when we run the graph.
 //
 - (BOOL)shouldAutorotate
 {
     return YES;
 }
 
-//
-// Supporting only landscape.
-//
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
-    return UIInterfaceOrientationMaskLandscape;
+    return UIInterfaceOrientationMaskAll;
 }
 
 
@@ -114,13 +112,10 @@
 	[super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
 
     //
-    // ignore everything but landscape orientation changes.
+    // Change the orientation of the video session
     //
 	UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
-	if ( UIDeviceOrientationIsLandscape(deviceOrientation) )
-    {
-		self.cameraPreviewView.videoPreviewLayer.connection.videoOrientation = (AVCaptureVideoOrientation)deviceOrientation;
-	}
+    self.cameraPreviewView.videoPreviewLayer.connection.videoOrientation = (AVCaptureVideoOrientation)deviceOrientation;
 }
 
 #pragma mark - Video Preview delegate

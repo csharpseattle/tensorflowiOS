@@ -21,11 +21,16 @@ class CameraPreviewView: UIView
     private var cameraSetupResult: SessionSetupResult = .success
     private let avSession = AVCaptureSession()
     private var isSessionRunning = false
-    
+
+    //
     // Communicate with the session and other session objects on this queue.
+    //
     private let previewSessionQueue = DispatchQueue(label: "PreviewSessionQueue")
     
-    // We use a serial queue for the video frames so that they are dispatched in the order that they are captured
+    //
+    // We use a serial queue for the video frames so that they are
+    // dispatched in the order that they are captured
+    //
     private let videoSessionQueue = DispatchQueue(label: "VideoFrameQueue")
     
     private let videoOutput:AVCaptureVideoDataOutput = AVCaptureVideoDataOutput()
@@ -48,26 +53,30 @@ class CameraPreviewView: UIView
         switch AVCaptureDevice.authorizationStatus(for: .video)
         {
             case .authorized:
-            // The user has previously granted access to the camera.
+                //
+                // The user has previously granted access to the camera.
+                //
             break
             
             case .notDetermined:
-            /*
-             The user has not yet been presented with the option to grant
-             video access. We suspend the session queue to delay session
-             setup until the access request has completed.
-             */
-            previewSessionQueue.suspend()
-            AVCaptureDevice.requestAccess(for: .video, completionHandler: { granted in
-                if !granted
-                {
-                    self.cameraSetupResult = .notAuthorized
-                }
-                self.previewSessionQueue.resume()
-            })
+                //
+                // The user has not yet been presented with the option to grant
+                // video access. We suspend the session queue to delay session
+                // setup until the access request has completed.
+                //
+                previewSessionQueue.suspend()
+                AVCaptureDevice.requestAccess(for: .video, completionHandler: { granted in
+                    if !granted
+                    {
+                        self.cameraSetupResult = .notAuthorized
+                    }
+                    self.previewSessionQueue.resume()
+                })
             
             default:
+                //
                 // The user has previously denied access.
+                //
                 cameraSetupResult = .notAuthorized
         }
     }
@@ -84,27 +93,35 @@ class CameraPreviewView: UIView
             
             self.avSession.beginConfiguration()
         
+            //
             // Add video input.
+            // We try to add the Back Dual Camera and if that is unavailable we try the back wide angle
+            // camera.  If that fails, we try to add the front wide angle camera
+            //
             do
             {
                 var defaultVideoDevice: AVCaptureDevice?
-                
+
+                //
                 // Choose the back dual camera if available, otherwise default to a wide angle camera.
+                //
                 if let dualCameraDevice = AVCaptureDevice.default(.builtInDualCamera, for: .video, position: .back)
                 {
                     defaultVideoDevice = dualCameraDevice
                 }
                 else if let backCameraDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back)
                 {
+                    //
                     // If the back dual camera is not available, default to the back wide angle camera.
+                    //
                     defaultVideoDevice = backCameraDevice
                 }
                 else if let frontCameraDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front)
                 {
-                    /*
-                     In some cases where users break their phones, the back wide angle camera is not available.
-                     In this case, we should default to the front wide angle camera.
-                     */
+                    //
+                    // In some cases where users break their phones, the back wide angle camera is not available.
+                    // In this case, we should default to the front wide angle camera.
+                    //
                     defaultVideoDevice = frontCameraDevice
                 }
                 
@@ -115,8 +132,10 @@ class CameraPreviewView: UIView
                     self.avSession.addInput(videoDeviceInput)
                     
                     DispatchQueue.main.async {
+                        //
                         // Dispatching this to the main queue because a UIView (CameraPreviewView) can only be
                         // changed on the main thread.
+                        //
                         let statusBarOrientation = UIApplication.shared.statusBarOrientation
                         var initialVideoOrientation: AVCaptureVideoOrientation = .portrait
                         if (statusBarOrientation != .unknown)
@@ -146,7 +165,7 @@ class CameraPreviewView: UIView
             }
 
             //
-            // let's not forget that we need video output too.
+            // Add video output too.
             //
             self.addVideoOutput(delegate)
             
@@ -238,7 +257,11 @@ class CameraPreviewView: UIView
                     self.avSession.startRunning()
                     self.isSessionRunning = self.avSession.isRunning;
     
-                    // Let everyone know we have a session.
+                    //
+                    // Let everyone know we have a session.  This tells all listeners that
+                    // the AV Session is ready and capturing video frames.  It is now okay to
+                    // load the tensorflow graph
+                    //
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: kAVSessionStarted), object:nil)
 
                 case .notAuthorized:

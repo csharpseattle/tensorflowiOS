@@ -10,10 +10,10 @@
 
 
 const int kGraphChannels         = 3;    // BGR.
-const int kGraphImageWidth       = 480;  // The width of the pixels going into the graph.
-const int kGraphImageHeight      = 270;  // the height of the pixels going into the graph.
-const float kPredictionThreshold = 0.50; // Prediction percentages lower than this will be discarded.
-const int kGraphMaxPredictions   = 15;   // After this many predictions we move on.
+const int kGraphImageWidth       = 299;  // The width of the pixels going into the graph.
+const int kGraphImageHeight      = 299;  // the height of the pixels going into the graph.
+const float kPredictionThreshold = 0.65; // Prediction percentages lower than this will be discarded.
+const int kGraphMaxPredictions   = 10;   // After this many predictions we move on.
 const int kAverageEveryXFrames   = 50;   // Output average processing time every X frames
 
 @interface TensorflowGraph()
@@ -22,7 +22,9 @@ const int kAverageEveryXFrames   = 50;   // Output average processing time every
     object_detection::protos::StringIntLabelMap labelMap;
 }
 
+//
 // processingTime and framesProcessed are used for keeping an average time to make predictions.
+//
 @property (nonatomic) double processingTime;
 @property (nonatomic) int    framesProcessed;
 
@@ -78,26 +80,156 @@ const int kAverageEveryXFrames   = 50;   // Output average processing time every
     return (!self.isProcessingFrame);
 }
 
-
-- (CGImageRef) copyPixelBuffer: (CVImageBufferRef) pixelBuffer
+//
+// PixelBufferToCGImage
+// pixelBuffer --- the pixel buffer obtained from the device camera
+// orientation --- the orientation of the device.
+//
+// This method retains the CVPixelBuffer, copies it, and applies rotations and scaling
+// necessary before feeding the image data into the Tensorflow Graph.
+//
+- (CGImageRef) pixelBufferToCGImage: (CVImageBufferRef) pixelBuffer orientation: (UIDeviceOrientation) orientation
 {
+    CFRetain(pixelBuffer);
+    CVPixelBufferLockBaseAddress(pixelBuffer, kCVPixelBufferLock_ReadOnly);
+    
     //
     // alloc a CIImage with the pixel buffer.
+    //
     CIImage* ciImage = [[CIImage alloc] initWithCVPixelBuffer:pixelBuffer];
-    
+
+    //
+    // figure the angle of rotation and the scaling of the pixel buffer
+    // based on the current orientation of the device.
+    //
     const int pixelBufHeight   = (int) CVPixelBufferGetHeight(pixelBuffer);
     const int pixelBufWidth    = (int) CVPixelBufferGetWidth(pixelBuffer);
-    CGAffineTransform scale = CGAffineTransformMakeScale(float(kGraphImageWidth)/pixelBufWidth,
-                                                         float(kGraphImageHeight)/pixelBufHeight);
-    CIImage* resized = [ciImage imageByApplyingTransform:scale];
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    CGFloat angle = 0.0;
+    switch (orientation)
+    {
+        case UIDeviceOrientationPortrait:
+        {
+            angle = -M_PI_2;
+            transform = CGAffineTransformScale(transform, float(kGraphImageHeight)/pixelBufHeight, float(kGraphImageWidth)/pixelBufWidth);
+        }
+            break;
+        case UIDeviceOrientationPortraitUpsideDown:
+        {
+            angle = M_PI_2;
+            transform = CGAffineTransformScale(transform, float(kGraphImageHeight)/pixelBufHeight, float(kGraphImageWidth)/pixelBufWidth);
+        }
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+        {
+            angle = 0.0;
+            transform = CGAffineTransformScale(transform, float(kGraphImageWidth)/pixelBufWidth, float(kGraphImageHeight)/pixelBufHeight);
+        }
+            break;
+        case UIDeviceOrientationLandscapeRight:
+        {
+            angle = M_PI;
+            transform = CGAffineTransformScale(transform, float(kGraphImageWidth)/pixelBufWidth, float(kGraphImageHeight)/pixelBufHeight);
+        }
+            break;
+        case UIDeviceOrientationUnknown:
+        case UIDeviceOrientationFaceUp:
+        case UIDeviceOrientationFaceDown:
+        default:
+            angle = 0.0;
+            transform = CGAffineTransformScale(transform, float(kGraphImageWidth)/pixelBufWidth, float(kGraphImageHeight)/pixelBufHeight);
+            break;
+    }
+
+    //
+    // Apply the transforms
+    //
+    transform = CGAffineTransformRotate(transform, angle);
+    CIImage* resized = [ciImage imageByApplyingTransform:transform];
     
     //
     // Create a cgImage from the frame pixels
     //
     CIContext *context = [CIContext contextWithOptions:nil];
     CGImageRef cgImage = [context createCGImage:resized fromRect:resized.extent];
+
+    //
+    // We are done with the pixel buffer, release it.
+    //
+    CFRelease(pixelBuffer);
+    CVPixelBufferUnlockBaseAddress(pixelBuffer, kCVPixelBufferLock_ReadOnly);
     
+    //
+    // This cgImage is released after using it to populate the Tensor
+    //
     return cgImage;
+}
+
+
+//
+// createDebugImage
+// srcData -- pointer to image pixel data.
+// width   -- pixel width of the image.
+// height  -- pixel height of the image.
+//
+// This method is useful for debuging the image data immediately before going into
+// the TF graph.  Given a pointer to the pixel data this method will add an alpha
+// channel and convert the raw image data into a UIImage.  The UIImage will be
+// broadcast to any listeners for easy display in a UIView.
+//
+- (void) createDebugImage: (unsigned char*) srcData width: (size_t) width height: (size_t) height
+{
+    //
+    // Create a destination array for the cgImage pixel data
+    //
+    const size_t srcChannels = kGraphChannels;
+    const size_t dstChannels = 4;
+    const size_t numBytes = width * height * dstChannels;
+    unsigned char pixelData[numBytes];
+    unsigned char * destPixels = pixelData;
+
+    //
+    // Copy into the destination array, adding the alpha channel.
+    // Since the raw image data comes as BGR and we want RGB we
+    // flip the blue and red channels.  Alpha is added as opaque.
+    //
+    size_t i = 0;
+    while (i < (width * height * srcChannels))
+    {
+        *destPixels++ = srcData[i+2];
+        *destPixels++ = srcData[i+1];
+        *destPixels++ = srcData[i];
+        *destPixels++ = UINT8_MAX;
+        i += srcChannels;
+    }
+    
+    //
+    // Create the bitmap context
+    //
+    const size_t BitsPerComponent = 8;
+    const size_t BytesPerRow = width * dstChannels;
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGContextRef cxt = CGBitmapContextCreate(&pixelData[0], width, height, BitsPerComponent, BytesPerRow, colorSpace, kCGImageAlphaNoneSkipLast);
+    
+    //
+    // create the CGImage and UIImage from the context
+    //
+    CGImageRef cgImage = CGBitmapContextCreateImage(cxt);
+    UIImage * uiImage = [[UIImage alloc] initWithCGImage:cgImage];
+
+    //
+    // Clean up
+    //
+    CFRelease(cxt);
+    CFRelease(colorSpace);
+    CGImageRelease(cgImage);
+    
+    //
+    // Notify that a new image is going to be fed to the graph.
+    //
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"kDebugImageUpdated" object:nil userInfo:@{@"debugImage" : uiImage}];
+    });
 }
 
 
@@ -114,26 +246,18 @@ const int kAverageEveryXFrames   = 50;   // Output average processing time every
     {
         return;
     }
-    
-    //
-    // Retain the pixel buffer, copy and make a CGImage out of it.
-    //
-    CFRetain(pixelBuffer);
-    CVPixelBufferLockBaseAddress(pixelBuffer, kCVPixelBufferLock_ReadOnly);
-    CGImageRef cgImage = [self copyPixelBuffer:pixelBuffer];
-    CFRelease(pixelBuffer);
-    CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
 
     //
     // mark the graph as busy
     //
     self.isProcessingFrame = YES;
-    
+
     //
-    // Create a tensor for running through the graph.
+    // Retain the pixel buffer, copy and make a CGImage out of it.  pixelBufferToCGImage will
+    // rotate the pixel buffer if necessary and scale the image down to the width and height
+    // desired for inference. pixelBufferToCGImage will also release the CVPixelBuffer.
     //
-    tensorflow::Tensor imageTensor(tensorflow::DT_UINT8, tensorflow::TensorShape({1, kGraphImageHeight, kGraphImageWidth, kGraphChannels}));
-    auto imageTensorDimensioned = imageTensor.tensor<tensorflow::uint8, 4>();
+    CGImageRef cgImage = [self pixelBufferToCGImage:pixelBuffer orientation:orientation];
 
     //
     // Gather needed dimensions of the CGImage
@@ -144,48 +268,32 @@ const int kAverageEveryXFrames   = 50;   // Output average processing time every
     const int srcChannels = (int) bytesPerRow / srcWidth;
     
     //
-    // Scale the pixel data down, drop the alpha channel, and populate the image_tensor.
-    // The source pointer iterates through the pixelBuffer and the destination pointer
-    // writes pixel data into the reshaped image tensor.  Changing the GraphInputWidth and Height
-    // may increase (or decrease) speed and/or accuracy.
+    // Create a tensor for running through the graph.
+    //
+    tensorflow::Tensor imageTensor(tensorflow::DT_UINT8, tensorflow::TensorShape({1, kGraphImageHeight, kGraphImageWidth, kGraphChannels}));
+    auto imageTensorDimensioned = imageTensor.tensor<tensorflow::uint8, 4>();
+    
+    //
+    // Get a pointer to the pixel data in the cgImage.  This is our starting
+    // address of the source pixel buffer data.
     //
     CFDataRef pixelData = CGDataProviderCopyData(CGImageGetDataProvider(cgImage));
     unsigned char *srcStartAddress  = (unsigned char*) CFDataGetBytePtr(pixelData);
     
     //
-    // if the orientation is landscape-right the source pixels start at the end of the pixel buffer
-    // and read backwards.  dest pixel still ends up in the same row, col.
-    //
-    if (orientation == UIDeviceOrientationLandscapeRight)
-    {
-        srcStartAddress += (bytesPerRow * srcHeight);
-    }
-    
-    //
-    // Scale the buffer down to the expected size and shape of the input tensor for the TF graph
-    // also, drop the alpha component as the pixel format going in is BGA.
+    // Scale the pixel data down to the expected width and height, drop the alpha channel,
+    // and populate the image_tensor.
+    // The source pointer iterates through the pixel data and copies the data
+    // into the reshaped Tensorflow image tensor.  Changing the GraphInputWidth and Height
+    // may increase (or decrease) speed and/or accuracy.
     //
     unsigned char *destStartAddress = imageTensorDimensioned.data();
-    for (int row = 0; row < kGraphImageHeight; ++row)
+    for (int row = 0; row < srcHeight; ++row)
     {
-        unsigned char *destRow = destStartAddress + (row * kGraphImageWidth * kGraphChannels);
-        for (int col = 0; col < kGraphImageWidth; ++col)
+        unsigned char *destRow = destStartAddress + (row * srcWidth * kGraphChannels);
+        for (int col = 0; col < srcWidth; ++col)
         {
-            const int srcRow = (int) (row * (srcHeight / kGraphImageHeight));
-            const int srcCol = (int) (col * (srcWidth  / kGraphImageWidth));
-            unsigned char* srcPixel;
-            
-            if (orientation == UIDeviceOrientationLandscapeRight)
-            {
-                // landscape right - we start at the end of the buffer and read backwards
-                srcPixel  = srcStartAddress - (srcRow * bytesPerRow) - (srcCol * srcChannels);
-            }
-            else
-            {
-                // landscape left - we start at the beginning of the buffer and read forward
-                srcPixel  = srcStartAddress + (srcRow * bytesPerRow) + (srcCol * srcChannels);
-            }
-            
+            unsigned char* srcPixel  = srcStartAddress + (row * bytesPerRow) + (col * srcChannels);
             unsigned char* destPixel = destRow + (col * kGraphChannels);
             for (int c = 0; c < kGraphChannels; ++c)
             {
@@ -223,6 +331,25 @@ const int kAverageEveryXFrames   = 50;   // Output average processing time every
             else
             {
                 //
+                // Calculate the amount of time it took to run the image through
+                // the model.
+                //
+                struct timespec ts_end;
+                clock_gettime(CLOCK_MONOTONIC, &ts_end);
+                struct timespec elapsed = diff(ts_start, ts_end);
+                
+                //
+                // Calculate an average time and output every X frames.
+                //
+                self.processingTime += elapsed.tv_sec;
+                self.processingTime += (elapsed.tv_nsec / 1000000000.0f);
+                self.framesProcessed += 1;
+                if (self.framesProcessed % kAverageEveryXFrames == 0)
+                {
+                    printf("Avg. prediction time: %f\n", self.processingTime / self.framesProcessed);
+                }
+                
+                //
                 // Generate our list of predictions and bounding boxes
                 //
                 auto boundingBoxesFlat = outputs[0].flat<float>();
@@ -253,7 +380,8 @@ const int kAverageEveryXFrames   = 50;   // Output average processing time every
                     prediction.left   = boundingBoxesFlat(i * 4 + 1);
                     prediction.bottom = boundingBoxesFlat(i * 4 + 2);
                     prediction.right  = boundingBoxesFlat(i * 4 + 3);
-
+                    
+                    printf("Prediction: %s --- Score: %f\n", [prediction.label cStringUsingEncoding:NSASCIIStringEncoding], prediction.score);
 
                     //
                     // Crop the pixels out of the bounding box and put the cropped
@@ -261,44 +389,17 @@ const int kAverageEveryXFrames   = 50;   // Output average processing time every
                     // normalized so we multiply by the image dimensions to get
                     // back to pixel values.
                     //
+                    const int x = srcWidth  * prediction.left;
+                    const int y = srcHeight * prediction.top;
                     const int w = srcWidth  * (prediction.right - prediction.left);
                     const int h = srcHeight * (prediction.bottom - prediction.top);
                     
-                    int x, y;
-                    if (orientation == UIDeviceOrientationLandscapeRight)
-                    {
-                        x = srcWidth  * (1 - prediction.left - (prediction.right - prediction.left));
-                        y = srcHeight * (1 - prediction.top - (prediction.bottom - prediction.top));
-                    }
-                    else
-                    {
-                        x = srcWidth  * prediction.left;
-                        y = srcHeight * prediction.top;
-                    }
                     CGRect croppedArea = CGRectMake(x, y, w, h);
                     CGImageRef cropped = CGImageCreateWithImageInRect(cgImage, croppedArea);
                     prediction.image = [UIImage imageWithCGImage:cropped];
                     CGImageRelease(cropped);
                     
                     [predictions addObject:prediction];
-                }
-                
-                //
-                // Now that predictions are done calculate the amount of time elapsed since the start of processing.
-                //
-                struct timespec ts_end;
-                clock_gettime(CLOCK_MONOTONIC, &ts_end);
-                struct timespec elapsed = diff(ts_start, ts_end);
-                
-                //
-                // Calculate an average time and output every X frames.
-                //
-                self.processingTime += elapsed.tv_sec;
-                self.processingTime += (elapsed.tv_nsec / 1000000000.0f);
-                self.framesProcessed += 1;
-                if (self.framesProcessed % kAverageEveryXFrames == 0)
-                {
-                    printf("Avg. prediction time: %f\n", self.processingTime / self.framesProcessed);
                 }
                 
                 //
@@ -309,8 +410,9 @@ const int kAverageEveryXFrames   = 50;   // Output average processing time every
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"kPredictionsUpdated" object:nil userInfo:@{@"predictions" : predictions}];
                 });
                 
-                CGImageRelease(cgImage);
             }
+            
+            CGImageRelease(cgImage);
             
             self.isProcessingFrame = NO;
         }  // end --- if (tfSession.get)

@@ -80,19 +80,17 @@ class ViewController:UIViewController, AVCaptureVideoDataOutputSampleBufferDeleg
     }
     
     //
-    // Yes, please autorotate, but we will have to change the orientation of the pixel buffer when we run the graph.
+    // We allow autorotation to all orientations, but may have to rotate the
+    // pixel buffer when we run the graph.
     //
     override var shouldAutorotate: Bool
     {
         return true
     }
     
-    //
-    // Supporting only landscape.
-    //
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask
+    override var supportedInterfaceOrientations:UIInterfaceOrientationMask
     {
-        return .landscape
+        return UIInterfaceOrientationMask.all
     }
     
     //
@@ -101,43 +99,49 @@ class ViewController:UIViewController, AVCaptureVideoDataOutputSampleBufferDeleg
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)
     {
         //
-        // call super so the coordinator can be passed on.
+        // call super so the coordinator can be passed on
+        // to views and child view controllers.
         //
         super.viewWillTransition(to: size, with: coordinator)
         
         if let videoPreviewLayerConnection = cameraPreviewView.videoPreviewLayer.connection
         {
             //
-            // ignore everything but landscape orientation changes.
+            // Change the orientation of the video session
             //
             let deviceOrientation = UIDevice.current.orientation
-            guard let newVideoOrientation = AVCaptureVideoOrientation(deviceOrientation: deviceOrientation), deviceOrientation.isLandscape else {
-                    return
+            if let newVideoOrientation = AVCaptureVideoOrientation(deviceOrientation: deviceOrientation) {
+                videoPreviewLayerConnection.videoOrientation = newVideoOrientation
             }
-            
-            videoPreviewLayerConnection.videoOrientation = newVideoOrientation
         }
     }
 
+    //
+    // This delegate method is where we are notified of a new video frame.  We obtain
+    // CVPixelBuffer from the provided sample buffer and pass it on to the tensorflow graph
+    //
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection)
     {
+        //
+        // TensorflowGraph needs a CVPixelBuffer.  Get it from the sampleBuffer
+        //
         let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)!
-        
+
+        //
+        // if the graph is ready pass it on.
+        //
         if tensorflowGraph != nil
         {
             tensorflowGraph?.runModel(on: pixelBuffer, orientation: UIDevice.current.orientation)
         }
     }
     
+    
     func captureOutput(_ output: AVCaptureOutput, didDrop sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection)
     {
         //do something with dropped frames here
     }
-    
-
-
-
-    
+        
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // MARK: - Notification Handlers
     
@@ -189,8 +193,10 @@ class ViewController:UIViewController, AVCaptureVideoDataOutputSampleBufferDeleg
         DispatchQueue.main.async {
             if let userinfo = notification.userInfo {
                 if let predictions:[TensorflowPrediction] = userinfo["predictions"] as? [TensorflowPrediction] {
+                    //
                     // Update the Bounding boxes and labels from the
                     // new predictions coming out of the graph.
+                    //
                     self.boundingBoxView.updateBoundingBoxes(predictions)
                 }
             }
@@ -204,20 +210,20 @@ class ViewController:UIViewController, AVCaptureVideoDataOutputSampleBufferDeleg
 extension AVCaptureVideoOrientation {
     init?(deviceOrientation: UIDeviceOrientation) {
         switch deviceOrientation {
-        case .portrait: self = .portrait
+        case .portrait:           self = .portrait
         case .portraitUpsideDown: self = .portraitUpsideDown
-        case .landscapeLeft: self = .landscapeRight
-        case .landscapeRight: self = .landscapeLeft
+        case .landscapeLeft:      self = .landscapeRight
+        case .landscapeRight:     self = .landscapeLeft
         default: return nil
         }
     }
     
     init?(interfaceOrientation: UIInterfaceOrientation) {
         switch interfaceOrientation {
-        case .portrait: self = .portrait
+        case .portrait:           self = .portrait
         case .portraitUpsideDown: self = .portraitUpsideDown
-        case .landscapeLeft: self = .landscapeLeft
-        case .landscapeRight: self = .landscapeRight
+        case .landscapeLeft:      self = .landscapeLeft
+        case .landscapeRight:     self = .landscapeRight
         default: return nil
         }
     }
