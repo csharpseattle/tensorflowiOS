@@ -448,6 +448,7 @@
 					"$(TENSORFLOW_ROOT)/tensorflow/contrib/makefile/downloads/protobuf/src",
 					"$(TENSORFLOW_ROOT)/tensorflow/contrib/makefile/gen/proto",
 					"$(TENSORFLOW_ROOT)/tensorflow/contrib/makefile/downloads/nsync/public/",
+					"$(TENSORFLOW_ROOT)/tensorflow/contrib/makefile/downloads/absl",
 				);
 				INFOPLIST_FILE = SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -487,6 +488,7 @@
 					"$(TENSORFLOW_ROOT)/tensorflow/contrib/makefile/downloads/protobuf/src",
 					"$(TENSORFLOW_ROOT)/tensorflow/contrib/makefile/gen/proto",
 					"$(TENSORFLOW_ROOT)/tensorflow/contrib/makefile/downloads/nsync/public/",
+					"$(TENSORFLOW_ROOT)/tensorflow/contrib/makefile/downloads/absl",
 				);
 				INFOPLIST_FILE = SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

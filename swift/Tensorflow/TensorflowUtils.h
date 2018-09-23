@@ -3,10 +3,11 @@
 #define tensorflowUtils_h
 
 #pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wconversion"
 #pragma clang diagnostic ignored "-Wdocumentation"
-
+#pragma clang diagnostic ignored "-Wconditional-uninitialized"
+#pragma clang diagnostic ignored "-Wcomma"
 #include "tensorflow/core/public/session.h"
-
 #include "tensorflow/core/util/memmapped_file_system.h"
 #include "third_party/eigen3/unsupported/Eigen/CXX11/Tensor"
 #pragma clang diagnostic pop

@@ -433,6 +433,7 @@
 					"$(TENSORFLOW_ROOT)/tensorflow/contrib/makefile/downloads/protobuf/src",
 					"$(TENSORFLOW_ROOT)/tensorflow/contrib/makefile/downloads/eigen",
 					"$(TENSORFLOW_ROOT)/tensorflow/contrib/makefile/downloads",
+					"$(TENSORFLOW_ROOT)/tensorflow/contrib/makefile/downloads/absl",
 					"$(TENSORFLOW_ROOT)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/SupportingFiles/Info.plist";
@@ -472,6 +473,7 @@
 					"$(TENSORFLOW_ROOT)/tensorflow/contrib/makefile/downloads/protobuf/src",
 					"$(TENSORFLOW_ROOT)/tensorflow/contrib/makefile/downloads/eigen",
 					"$(TENSORFLOW_ROOT)/tensorflow/contrib/makefile/downloads",
+					"$(TENSORFLOW_ROOT)/tensorflow/contrib/makefile/downloads/absl",
 					"$(TENSORFLOW_ROOT)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/SupportingFiles/Info.plist";
