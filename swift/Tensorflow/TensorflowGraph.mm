@@ -122,13 +122,13 @@ const int kAverageEveryXFrames   = 50;   // Output average processing time every
             break;
         case UIDeviceOrientationLandscapeLeft:
         {
-            angle = 0.0;
+            angle = -M_PI;
             transform = CGAffineTransformScale(transform, float(kGraphImageWidth)/pixelBufWidth, float(kGraphImageHeight)/pixelBufHeight);
         }
             break;
         case UIDeviceOrientationLandscapeRight:
         {
-            angle = M_PI;
+            angle = 0.0;
             transform = CGAffineTransformScale(transform, float(kGraphImageWidth)/pixelBufWidth, float(kGraphImageHeight)/pixelBufHeight);
         }
             break;
